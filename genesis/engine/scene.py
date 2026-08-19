@@ -632,7 +632,7 @@ class Scene(RBC):
         self._B = max(1, self.n_envs)
         self._envs_idx = torch.arange(self._B, dtype=gs.tc_int, device=gs.device)
 
-        if self.n_envs_per_row is None:
+        if self.n_envs_per_row is None or self.n_envs_per_row <= 0:
             self.n_envs_per_row = np.ceil(np.sqrt(self._B)).astype(int)
 
         # compute offset values for visualizing each env
